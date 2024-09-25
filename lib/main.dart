@@ -10,7 +10,9 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Simple Weather App',
-      theme: ThemeData(primarySwatch: Colors.blue),
+      theme: ThemeData(
+        primarySwatch: Colors.purple,  // Set the theme to purple
+      ),
       home: WeatherScreen(),
     );
   }
@@ -57,44 +59,45 @@ class _WeatherScreenState extends State<WeatherScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Input field for city name
-            TextField(
-              controller: _cityController,
-              decoration: InputDecoration(
-                labelText: 'Enter City Name',
-                border: OutlineInputBorder(),
+        child: Center( // Center everything
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,  // Center elements horizontally
+            children: [
+              // Input field for city name
+              TextField(
+                controller: _cityController,
+                decoration: InputDecoration(
+                  labelText: 'Enter City Name',
+                  border: OutlineInputBorder(),
+                ),
               ),
-            ),
-            SizedBox(height: 20),
+              SizedBox(height: 20),
 
-            // Button to fetch weather
-            Center(
-              child: ElevatedButton(
+              // Button to fetch weather
+              ElevatedButton(
                 onPressed: fetchWeather,
                 child: Text('Fetch Weather'),
               ),
-            ),
-            SizedBox(height: 30),
+              SizedBox(height: 30),
 
-            // Display weather information (city name, temperature, and condition)
-            Text(
-              'City: ${cityName.isEmpty ? 'City Name' : cityName}',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Temperature: ${temperature.isEmpty ? 'N/A' : temperature}',
-              style: TextStyle(fontSize: 18),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'Condition: ${weatherCondition.isEmpty ? 'N/A' : weatherCondition}',
-              style: TextStyle(fontSize: 18),
-            ),
-          ],
+              // Display weather information (city name, temperature, and condition)
+              Text(
+                'City: ${cityName.isEmpty ? 'City Name' : cityName}',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Temperature: ${temperature.isEmpty ? 'N/A' : temperature}',
+                style: TextStyle(fontSize: 18),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Condition: ${weatherCondition.isEmpty ? 'N/A' : weatherCondition}',
+                style: TextStyle(fontSize: 18),
+              ),
+              Spacer(),  // Add spacer to push the content above upwards
+            ],
+          ),
         ),
       ),
     );
