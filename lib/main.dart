@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+import 'dart:math'; // For generating random numbers
 
 void main() {
   runApp(WeatherApp());
@@ -23,20 +23,28 @@ class WeatherScreen extends StatefulWidget {
 
 class _WeatherScreenState extends State<WeatherScreen> {
   final TextEditingController _cityController = TextEditingController();
+  
+  // Variables to store the simulated weather data
   String cityName = '';
   String temperature = '';
   String weatherCondition = '';
 
-  // Simulate fetching weather (replace with API call in real case)
+  // Simulate fetching weather data
   void fetchWeather() {
     setState(() {
-      // Simulated data
+      // Get the entered city name from the TextField
       cityName = _cityController.text;
+
+      // Create a random number generator
       final random = Random();
 
-      // Generate random weather details
-      temperature = '${15 + random.nextInt(16)}°C'; // Random temperature between 15°C and 30°C
+      // Generate a random temperature between 15°C and 30°C
+      temperature = '${15 + random.nextInt(16)}°C';
+
+      // List of possible weather conditions
       List<String> weatherConditions = ['Sunny', 'Cloudy', 'Rainy'];
+
+      // Randomly select a weather condition
       weatherCondition = weatherConditions[random.nextInt(weatherConditions.length)];
     });
   }
