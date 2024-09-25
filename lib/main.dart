@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 void main() {
   runApp(WeatherApp());
@@ -29,10 +30,14 @@ class _WeatherScreenState extends State<WeatherScreen> {
   // Simulate fetching weather (replace with API call in real case)
   void fetchWeather() {
     setState(() {
-      // Simulated data (replace with real fetched data)
+      // Simulated data
       cityName = _cityController.text;
-      temperature = '25°C';
-      weatherCondition = 'Sunny';
+      final random = Random();
+
+      // Generate random weather details
+      temperature = '${15 + random.nextInt(16)}°C'; // Random temperature between 15°C and 30°C
+      List<String> weatherConditions = ['Sunny', 'Cloudy', 'Rainy'];
+      weatherCondition = weatherConditions[random.nextInt(weatherConditions.length)];
     });
   }
 
